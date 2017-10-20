@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MariosFoods", "MariosFoods\MariosFoods.csproj", "{518D3D74-61E5-4DB1-81E0-F591C8803B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MariosFoods.Tests", "MariosFoods.Tests\MariosFoods.Tests.csproj", "{EB9B2CA5-B06D-4C50-8EBB-8D7E00E3F467}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{518D3D74-61E5-4DB1-81E0-F591C8803B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518D3D74-61E5-4DB1-81E0-F591C8803B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518D3D74-61E5-4DB1-81E0-F591C8803B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518D3D74-61E5-4DB1-81E0-F591C8803B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB9B2CA5-B06D-4C50-8EBB-8D7E00E3F467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB9B2CA5-B06D-4C50-8EBB-8D7E00E3F467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB9B2CA5-B06D-4C50-8EBB-8D7E00E3F467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB9B2CA5-B06D-4C50-8EBB-8D7E00E3F467}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
