@@ -1,0 +1,39 @@
+﻿@model MariosFoods.Models.Product
+
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="vh-100 dt w-100 tc bg-dark-gray " style="background:url(https://www.toptal.com/designers/subtlepatterns/patterns/round.png);">
+<div class="container tc black-70 ">
+
+<h1 class="f1 f-headline-l fw1 i black-70 athelas">@Html.DisplayFor(model => model.Name) Details</h1>
+        <p>
+        <a href="@Url.Action("Create")">
+            <i class="fa fa-plus fa-3x grow pa3" aria-hidden="true"></i>
+            </a> 
+            <a href="@Url.Action("Edit", new {id = Model.ProductId})">
+            <i class="fa fa-pencil fa-3x grow pa3" aria-hidden="true"></i>
+            </a> 
+            <a href="@Url.Action("Delete", new {id = Model.ProductId})">
+            <i class="fa fa-trash fa-3x grow pa3" aria-hidden="true"></i>
+            </a>
+</p>
+        <br>
+        <br>
+
+
+<h3>Country of Origin: @Html.DisplayFor(model => model.Origin)</h3>
+<h3>Cost: $@Html.DisplayFor(model => model.Cost)</h3>
+
+        <br>
+
+<h5>@Html.ActionLink("Back to product list", "Index")</h5>
+
+
+
+
+
+
+

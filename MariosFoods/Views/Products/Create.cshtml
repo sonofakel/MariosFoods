@@ -1,0 +1,33 @@
+﻿@model MariosFoods.Models.Product
+
+@{
+
+    ViewData["Title"] = "Create new product";
+}
+<div class="vh-100 dt w-100 tc bg-dark-gray " style="background:url(https://www.toptal.com/designers/subtlepatterns/patterns/round.png);">
+<div class="container tc black-70 ">
+
+<h1 class="f1 f-headline-l fw1 i black-70 athelas">Create a product</h1>
+
+<div class="label-form-div">
+
+    @using (Html.BeginForm())
+
+    {
+    
+@Html.LabelFor(model => model.Name)
+@Html.EditorFor(model => model.Name)
+@Html.LabelFor(model => model.Cost)
+@Html.EditorFor(model => model.Cost)
+@Html.LabelFor(model => model.Origin)
+@Html.EditorFor(model => model.Origin)
+
+<input type="submit" name="Add new product" class="btn btn-default grow ma3" />
+    }
+</div>
+
+        <br>
+
+<h4>@Html.ActionLink("Back to product list", "Index")
+
+

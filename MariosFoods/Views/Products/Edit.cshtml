@@ -1,0 +1,30 @@
+﻿@model MariosFoods.Models.Product
+
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<div class="vh-100 dt w-100 tc bg-dark-gray " style="background:url(https://www.toptal.com/designers/subtlepatterns/patterns/round.png);">
+<div class="container tc black-70 ">
+
+<h1 class="f1 f-headline-l fw1 i black-70 athelas">Edit @Html.DisplayFor(model => model.Name)</h1>
+
+<div class="label-form-div">
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ProductId)
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    @Html.LabelFor(model => model.Cost)
+    @Html.EditorFor(model => model.Cost)
+    @Html.LabelFor(model => model.Origin)
+    @Html.EditorFor(model => model.Origin)
+
+    <input type="submit" value="Save" class="btn btn-default ma2 grow" />
+
+}
+</div>
+        <br>
+
+        <h5>@Html.ActionLink("Go back to product list", "Index")</h5>

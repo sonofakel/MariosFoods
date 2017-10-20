@@ -1,0 +1,20 @@
+﻿@model MariosFoods.Models.Product
+
+@{
+    ViewData["Title"] = "Delete product";
+}
+
+<div class="vh-100 dt w-100 tc bg-dark-gray " style="background:url(https://www.toptal.com/designers/subtlepatterns/patterns/round.png);">
+<div class="container tc black-70 ">
+
+<h1 class="f1 f-headline-l fw1 i black-70 athelas">Delete @Html.DisplayFor(model => model.Name)</h1>
+
+
+<h4>Are you sure you want to delete this?</h4>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<h5>@Html.ActionLink("Back to product list", "Index")</h5>
