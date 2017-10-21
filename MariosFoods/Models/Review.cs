@@ -36,6 +36,8 @@ namespace MariosFoods.Models
             set;
         }
 
+       
+
         public override bool Equals(System.Object otherReview)
         {
             if (!(otherReview is Review))

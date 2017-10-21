@@ -37,23 +37,19 @@ namespace MariosFoods.Controllers
             return View(reviewRepo.Reviews.Include(reviews => reviews.Product).ToList());
         }
 
-        //public IActionResult Details(int id)
-        //{
-        //    var thisReview = reviewRepo.Reviews.FirstOrDefault(Reviews => Reviews.ReviewId == id);
-        //    return View(thisReview);
-        //}
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewBag.ProductId = new SelectList(reviewRepo.Products, "ProductId", "Name");
+            ViewBag.ProductId = id;
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Review review)
         {
+            
             reviewRepo.Save(review);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Products", new { id = review.ProductId });
         }
 
         public IActionResult Edit(int id)

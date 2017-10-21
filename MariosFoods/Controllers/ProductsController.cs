@@ -34,7 +34,8 @@ namespace MariosFoods.Controllers
         }
         public IActionResult Details(int id)
         {
-            var thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
+            
+            var thisProduct = productRepo.Products.Include(products => products.Reviews).FirstOrDefault(products => products.ProductId == id);
             return View(thisProduct);
         }
         public IActionResult Create()

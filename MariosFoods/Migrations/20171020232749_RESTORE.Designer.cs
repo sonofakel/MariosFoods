@@ -8,9 +8,10 @@ using MariosFoods.Models;
 namespace MariosFoods.Migrations
 {
     [DbContext(typeof(MariosFoodsContext))]
-    partial class MariosFoodsContextModelSnapshot : ModelSnapshot
+    [Migration("20171020232749_RESTORE")]
+    partial class RESTORE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");

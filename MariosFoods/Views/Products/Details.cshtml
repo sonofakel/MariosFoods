@@ -9,6 +9,12 @@
 <div class="container tc black-70 ">
 
 <h1 class="f1 f-headline-l fw1 i black-70 athelas">@Html.DisplayFor(model => model.Name) Details</h1>
+
+    
+		      
+       
+		      
+		
         <p>
         <a href="@Url.Action("Create")">
             <i class="fa fa-plus fa-3x grow pa3" aria-hidden="true"></i>
@@ -24,10 +30,32 @@
         <br>
 
 
-<h3>Country of Origin: @Html.DisplayFor(model => model.Origin)</h3>
-<h3>Cost: $@Html.DisplayFor(model => model.Cost)</h3>
+<h5>Country of Origin: @Html.DisplayFor(model => model.Origin)</h3>
+<h5>Cost: $@Html.DisplayFor(model => model.Cost)</h3>
 
         <br>
+
+		<h3>Reviews for @Html.DisplayFor(model => model.Name)</h3>
+
+        <em>@Html.ActionLink("Add new review to product", "Create", "Reviews", new {id = Model.ProductId})</em>
+
+    @foreach(var review in Model.Reviews)
+{   <p>
+    
+
+    <h5>@Html.DisplayFor(model => review.Author) says:</h5>
+	
+    <p>@Html.DisplayFor(model => review.ContentBody)</p>
+	<h6>@Html.DisplayFor(model => review.Rating) Stars</h6>
+	
+
+			&nbsp;
+    
+
+    
+    
+    </p>
+}
 
 <h5>@Html.ActionLink("Back to product list", "Index")</h5>
 

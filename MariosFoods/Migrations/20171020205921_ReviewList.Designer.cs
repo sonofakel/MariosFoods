@@ -8,9 +8,10 @@ using MariosFoods.Models;
 namespace MariosFoods.Migrations
 {
     [DbContext(typeof(MariosFoodsContext))]
-    partial class MariosFoodsContextModelSnapshot : ModelSnapshot
+    [Migration("20171020205921_ReviewList")]
+    partial class ReviewList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -54,7 +55,7 @@ namespace MariosFoods.Migrations
             modelBuilder.Entity("MariosFoods.Models.Review", b =>
                 {
                     b.HasOne("MariosFoods.Models.Product", "Product")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MariosFoods.Models
 {
     public class Product
@@ -25,6 +29,10 @@ namespace MariosFoods.Models
             get;
             set;
         }
+
+       
+
+        public ICollection<Review> Reviews { get; set; }
 
         public override bool Equals(System.Object otherProduct)
         {
