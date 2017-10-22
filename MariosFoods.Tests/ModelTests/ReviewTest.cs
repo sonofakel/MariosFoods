@@ -25,18 +25,6 @@ namespace MariosFoods.Tests
 
         }
 
-        [TestMethod]
-        public void GetProductPropsTest()
-        {
-            var product = new Product("Chips", 2.00, "USA");
 
-            var nameResult = product.Name;
-            var costResult = product.Cost;
-            var originResult = product.Origin;
-
-            Assert.AreEqual("Chips", nameResult);
-            Assert.AreEqual(2.00, costResult);
-            Assert.AreEqual("USA", originResult);
-        }
     }
 }

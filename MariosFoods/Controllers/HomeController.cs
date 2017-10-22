@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MariosFoods.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MariosFoods.Controllers
@@ -10,6 +11,7 @@ namespace MariosFoods.Controllers
     {
         public IActionResult Index()
         {
+            //ViewBag.GetProductList = Product.GetProducts();
             return View();
         }
 

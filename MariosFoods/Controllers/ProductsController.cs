@@ -36,6 +36,7 @@ namespace MariosFoods.Controllers
         {
             
             var thisProduct = productRepo.Products.Include(products => products.Reviews).FirstOrDefault(products => products.ProductId == id);
+            ViewBag.Average = Product.AverageRating(thisProduct);
             return View(thisProduct);
         }
         public IActionResult Create()

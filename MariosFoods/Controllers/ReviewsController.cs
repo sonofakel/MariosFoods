@@ -69,16 +69,11 @@ namespace MariosFoods.Controllers
         public IActionResult Delete(int id)
         {
             var thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
-            return View(thisReview);
+            reviewRepo.Remove(thisReview);
+            return RedirectToAction("Index", "Products");
         }
 
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
-            reviewRepo.Remove(thisReview);
-            return RedirectToAction("Index");
-        }
+
 
 
 

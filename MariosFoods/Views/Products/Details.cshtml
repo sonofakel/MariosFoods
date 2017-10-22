@@ -11,7 +11,8 @@
 <h1 class="f1 f-headline-l fw1 i black-70 athelas">@Html.DisplayFor(model => model.Name) Details</h1>
 
     
-		      
+		      <h3>Average rating: @ViewBag.Average stars</h3>
+		
        
 		      
 		
@@ -30,8 +31,8 @@
         <br>
 
 
-<h5>Country of Origin: @Html.DisplayFor(model => model.Origin)</h3>
-<h5>Cost: $@Html.DisplayFor(model => model.Cost)</h3>
+<h5>Country of Origin: @Html.DisplayFor(model => model.Origin)</h5>
+<h5>Cost: $@Html.DisplayFor(model => model.Cost)</h5>
 
         <br>
 
@@ -39,22 +40,26 @@
 
         <em>@Html.ActionLink("Add new review to product", "Create", "Reviews", new {id = Model.ProductId})</em>
 
+		<br>
+        <br>
+		
     @foreach(var review in Model.Reviews)
-{   <p>
-    
+{  <div>
 
-    <h5>@Html.DisplayFor(model => review.Author) says:</h5>
-	
+			
+
+    <h5><a href="@Url.Action("Delete", "Reviews", new {id = review.ReviewId})">
+            <i class="fa fa-trash grow" aria-hidden="true"></i>
+            </a>@Html.DisplayFor(model => review.Author) says:</h5>
     <p>@Html.DisplayFor(model => review.ContentBody)</p>
 	<h6>@Html.DisplayFor(model => review.Rating) Stars</h6>
 	
 
-			&nbsp;
+		&nbsp;
+    
+    </div>
     
 
-    
-    
-    </p>
 }
 
 <h5>@Html.ActionLink("Back to product list", "Index")</h5>
