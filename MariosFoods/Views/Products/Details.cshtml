@@ -13,22 +13,17 @@
     
 		      <h3>Average rating: @ViewBag.Average stars</h3>
 		
-       
-		      
-		
-        <p>
-        <a href="@Url.Action("Create")">
-            <i class="fa fa-plus fa-3x grow pa3" aria-hidden="true"></i>
-            </a> 
-            <a href="@Url.Action("Edit", new {id = Model.ProductId})">
+       @if (User.Identity.IsAuthenticated) {
+           
+                <a href="@Url.Action("Edit", new {id = Model.ProductId})">
             <i class="fa fa-pencil fa-3x grow pa3" aria-hidden="true"></i>
             </a> 
             <a href="@Url.Action("Delete", new {id = Model.ProductId})">
-            <i class="fa fa-trash fa-3x grow pa3" aria-hidden="true"></i>
+            <i class="fa fa-trash fa-3x row pa3" aria-hidden="true"></i>
             </a>
-</p>
-        <br>
-        <br>
+                }
+		      
+
 
 
 <h5>Country of Origin: @Html.DisplayFor(model => model.Origin)</h5>
@@ -36,21 +31,42 @@
 
         <br>
 
-		<h3>Reviews for @Html.DisplayFor(model => model.Name)</h3>
+		
+        <h3>Review @Html.DisplayFor(model => model.Name)</h3>
+       
 
-        <em>@Html.ActionLink("Add new review to product", "Create", "Reviews", new {id = Model.ProductId})</em>
+		<form action="/Reviews/Create" method="post" class="new-review">
+		<input type="hidden" value="@Model.ProductId" name="ProductId">
+		 <label for="newAuthor">Author: </label>
+         <input type="text" name="newAuthor" />
+         <label for="newContentBody">Content: </label>
+         <input type="text" name="newContentBody" />
+         <label for="newRating">Rating: </label>
+         <input type="text" name="newRating" />
+         <button type="submit">Submit</button>
+        </form>
+        <div id="review-output"></div>
+
+		
 
 		<br>
         <br>
+
+		<h3>Reviews for @Html.DisplayFor(model => model.Name)</h3>
 		
     @foreach(var review in Model.Reviews)
 {  <div>
 
 			
-
-    <h5><a href="@Url.Action("Delete", "Reviews", new {id = review.ReviewId})">
-            <i class="fa fa-trash grow" aria-hidden="true"></i>
-            </a>@Html.DisplayFor(model => review.Author) says:</h5>
+            @using System.Security.Claims
+    <h5>
+        @if (User.Identity.IsAuthenticated) {
+            @Html.ActionLink("Delete this review", "Delete", "Reviews", new {id = review.ReviewId});
+        
+                }
+               <br>
+                <br>
+               @Html.DisplayFor(model => review.Author) says:</h5>
     <p>@Html.DisplayFor(model => review.ContentBody)</p>
 	<h6>@Html.DisplayFor(model => review.Rating) Stars</h6>
 	
@@ -68,5 +84,22 @@
 
 
 
+   <script>
+     $(document).ready(function () {            
+     $('.new-review').submit(function (event) {
+         event.preventDefault();
+         $.ajax({
+             url: '/Reviews/Create',
+             type: 'POST',
+             dataType: 'json',
+             data: $(this).serialize(),
+             success: function (result) {      
+                 $('#review-output').append(result);
+             }
+         });
+     });
 
+     });
+
+ <script>
 

@@ -1,32 +1,6 @@
 ﻿@model MariosFoods.Models.Review
 
-@{
 
-    ViewData["Title"] = "Create new review";
-}
-<div class="vh-100 dt w-100 tc bg-dark-gray " style="background:url(https://www.toptal.com/designers/subtlepatterns/patterns/round.png);">
-<div class="container tc black-70 ">
-
-<h1 class="f1 f-headline-l fw1 i black-70 athelas">Create a review</h1>
-
-<div class="label-form-div">
-
-    @using (Html.BeginForm())
-
-    {
-
-<input type="hidden" name="ProductId" value="@ViewBag.ProductId">			
-@Html.LabelFor(model => model.Author)
-@Html.EditorFor(model => model.Author)
-@Html.LabelFor(model => model.ContentBody)
-@Html.EditorFor(model => model.ContentBody)
-@Html.LabelFor(model => model.Rating)
-@Html.EditorFor(model => model.Rating)
-
-<input type="submit" name="Add new review" class="btn btn-default grow ma3" />
-    }
-</div>
-
-        <br>
-
-<h4>@Html.ActionLink("Back to product list", "Index", "Products")
+<h5>@Html.DisplayFor(model => model.Author) says:</h5>
+<p>@Html.DisplayFor(model => model.ContentBody)</p>
+<h6>@Html.DisplayFor(model => model.Rating) Stars</h6>

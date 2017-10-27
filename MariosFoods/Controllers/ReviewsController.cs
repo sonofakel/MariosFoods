@@ -38,18 +38,18 @@ namespace MariosFoods.Controllers
         }
 
 
-        public IActionResult Create(int id)
-        {
-            ViewBag.ProductId = id;
-            return View();
-        }
+        //public IActionResult Create(int id)
+        //{
+        //    ViewBag.ProductId = id;
+        //    return View();
+        //}
 
         [HttpPost]
-        public IActionResult Create(Review review)
+        public IActionResult Create(string newAuthor, string newContentBody, int newRating, int ProductId)
         {
-            
-            reviewRepo.Save(review);
-            return RedirectToAction("Index", "Products", new { id = review.ProductId });
+            Review newReview = new Review(newAuthor, newContentBody, newRating, ProductId);
+            reviewRepo.Save(newReview);
+            return Json(newReview);
         }
 
         public IActionResult Edit(int id)

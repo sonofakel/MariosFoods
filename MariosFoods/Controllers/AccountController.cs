@@ -39,7 +39,7 @@ namespace MariosFoods.Controllers
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
         else
         {
@@ -58,7 +58,7 @@ namespace MariosFoods.Controllers
         Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-            return RedirectToAction("Index");
+                return RedirectToAction("Index", "Products");
         }
         else
         {
@@ -70,7 +70,7 @@ namespace MariosFoods.Controllers
     public async Task<IActionResult> LogOff()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("Index");
+            return RedirectToAction("Index","Products");
     }
 }
 }

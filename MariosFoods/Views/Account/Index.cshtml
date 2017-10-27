@@ -10,6 +10,11 @@
 @if (User.Identity.IsAuthenticated)
 {
     <p>Hello @User.Identity.Name!</p>
+
+   <a href="@Url.Action("Create","Products")">
+            <i class="fa fa-plus fa-3x grow pa3" aria-hidden="true"></i>
+            </a> 
+
     @using (Html.BeginForm("LogOff", "Account"))
     {
         <input type="submit" class="btn btn-default" value="Log out" />
