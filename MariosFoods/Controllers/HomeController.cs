@@ -11,7 +11,7 @@ namespace MariosFoods.Controllers
     {
         public IActionResult Index()
         {
-            //ViewBag.GetProductList = Product.GetProducts();
+            ViewBag.GetProductList = Product.GetProducts();
             return View();
         }
 

@@ -33,4 +33,7 @@
     </div>
   </div>
 
-	      
+	@foreach(var product in ViewBag.GetProductList) 
+	{
+        <p>@product.Name</p>
+	}

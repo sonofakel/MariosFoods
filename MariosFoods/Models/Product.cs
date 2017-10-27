@@ -9,6 +9,7 @@ using MariosFoods.Models.Repositories;
 
 namespace MariosFoods.Models
 {
+    [Table("Product")]
     public class Product
     {
 
@@ -33,17 +34,19 @@ namespace MariosFoods.Models
             get;
             set;
         }
+
+        public virtual ApplicationUser User { get; set; }
        
 
         public ICollection<Review> Reviews { get; set; }
 
-        //public static List<Product> GetProducts()
-        //{
-        //    MariosFoodsContext context = new MariosFoodsContext();
-        //    var productList = context.Products.ToList();
+        public static List<Product> GetProducts()
+        {
+            MariosFoodsContext context = new MariosFoodsContext();
+            var productList = context.Products.ToList();
 
-        //    return productList;
-        //}
+            return productList;
+        }
 
         public static decimal AverageRating(Product product)
         {

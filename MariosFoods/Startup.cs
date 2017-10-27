@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MariosFoods.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using MariosFoods.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MariosFoods
@@ -32,27 +33,31 @@ namespace MariosFoods
         {
             // Add framework services.
             services.AddMvc();
-            services.AddEntityFramework()
-                .AddDbContext<MariosFoodsContext>(options =>
-                 options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddEntityFrameworkMySql()
+                    .AddDbContext<MariosFoodsContext>(options =>
+                                              options
+                                                   .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<MariosFoodsContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseIdentity();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

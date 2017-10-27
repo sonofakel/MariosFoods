@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MariosFoods.Models
 {
+    [Table("Reviews")]
     public class Review
     {
         public int ReviewId
@@ -35,6 +38,8 @@ namespace MariosFoods.Models
             get;
             set;
         }
+
+        public virtual ApplicationUser User { get; set; }
 
         
 

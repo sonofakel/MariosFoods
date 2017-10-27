@@ -8,9 +8,10 @@ using MariosFoods.Models;
 namespace MariosFoods.Migrations
 {
     [DbContext(typeof(MariosFoodsContext))]
-    partial class MariosFoodsContextModelSnapshot : ModelSnapshot
+    [Migration("20171027163656_Again")]
+    partial class Again
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -77,13 +78,9 @@ namespace MariosFoods.Migrations
 
                     b.Property<string>("Origin");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("ProductId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("MariosFoods.Models.Review", b =>
@@ -99,13 +96,9 @@ namespace MariosFoods.Migrations
 
                     b.Property<int>("Rating");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("ReviewId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
                 });
@@ -230,23 +223,12 @@ namespace MariosFoods.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MariosFoods.Models.Product", b =>
-                {
-                    b.HasOne("MariosFoods.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("MariosFoods.Models.Review", b =>
                 {
                     b.HasOne("MariosFoods.Models.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MariosFoods.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

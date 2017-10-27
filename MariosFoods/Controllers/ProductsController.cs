@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using MariosFoods.Models;
 using MariosFoods.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,6 +28,7 @@ namespace MariosFoods.Controllers
                 this.productRepo = thisRepo;
             }
         }
+
 
         // GET: /<controller>/
         public IActionResult Index()
